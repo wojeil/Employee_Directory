@@ -4,11 +4,18 @@ import API from "../utils/API"
 class Main extends React.Component {
 
     state ={
-        employee:[]
+        employees:[]
     }
 
     componentDidMount(){
-
+        API.getEmployees()
+        .then(data =>{
+            console.log(data.data.results);
+            this.setState({
+                employees:data.data.results
+            })
+        })
+        .catch(err =>console.log (err));
     }
 
 
@@ -16,7 +23,15 @@ class Main extends React.Component {
     render() {
 
         return (
+            <>
             <h1>Main Componenet</h1>
+            <ul>
+                {this.state.employees.map((employee, i )=> (
+                 <li 
+                 key ={i}>{employee.name.first}</li>   
+                ))}
+            </ul>
+            </>
         )
 
 
