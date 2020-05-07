@@ -29,8 +29,8 @@ class Main extends React.Component {
     render() {
         let filteredEmployees = this.state.employees.filter(
             (employee) =>{
-                return employee !== -1;
-                // return employee.name.first.indexOf(this.state.search) !== -1;
+                // return employee.indexOf(this.state.search) !== -1;
+                return employee.name.first.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
             }
 
         );
@@ -41,7 +41,8 @@ class Main extends React.Component {
                     <div className="container">
                         <h1 className="display-4">Employee Directory</h1>
                         <p className="lead">Find your Employees</p>
-                        <input className="text-center" placeholder="Search by Name" value= {this.state.search} onChange= {this.filtering}></input>
+                        <input type="text" className="text-center" placeholder="Search by Name" 
+                        value= {this.state.search} onChange= {this.filtering.bind(this)}/>
                     </div>
 
                 </div>
