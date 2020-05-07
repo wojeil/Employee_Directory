@@ -6,8 +6,8 @@ class Main extends React.Component {
     state = {
         search:"",
         employees: [],
-        sorted: []
-        
+        sorted: [],
+        order: false
 
     }
 
@@ -26,11 +26,11 @@ class Main extends React.Component {
         this.setState({search: e.target.value});
     }
 
-    sorting( a, b ) {
-        if ( a.first < b.first ){
+    sorting( a, b) {
+        if ( a.name.first < b.name.first ){
           return -1;
         }
-        if ( a.first> b.first ){
+        if ( a.name.first> b.name.first ){
           return 1;
         }
         return 0;
@@ -38,9 +38,19 @@ class Main extends React.Component {
      
     onClick = () =>{
         console.log("it works");
-        this.setState({
-            sorted: this.state.employees.sort(this.sorting)
-        })
+        if(this.state.order=== false){
+            this.setState({
+                sorted:this.state.employees.sort(this.sorting),
+                order: true
+            })
+        }
+        else{
+            this.setState({
+                sorted:this.state.employees.reverse(),
+                order: false
+            })
+
+        }
     }
 
 
