@@ -83,7 +83,7 @@ class Main extends React.Component {
                         <tr>
                             <th scope="col"></th>
                             <th scope="col">Image</th>
-                            <th scope="col" onClick= {this.onClick}>First</th>
+                            <th scope="col" onClick= {this.onClick}>First <i class="fas fa-arrow-up"></i><i class="fas fa-arrow-down"></i></th>
                             <th scope="col">Last</th>
                             <th scope="col">Email</th>
                             <th scope="col">Phone Number</th>
