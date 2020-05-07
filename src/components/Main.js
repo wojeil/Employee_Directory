@@ -4,7 +4,10 @@ import API from "../utils/API"
 class Main extends React.Component {
 
     state = {
+        search:"",
         employees: []
+        
+
     }
 
     componentDidMount() {
@@ -18,21 +21,27 @@ class Main extends React.Component {
             .catch(err => console.log(err));
     }
 
+    filtering (e){
+        this.setState({search: e.target.value.substr(0,20)});
+    }
 
 
     render() {
+        let filteredEmployees = this.state.employees.filter(
+            (employee) =>{
+                return employee !== -1;
+                // return employee.name.first.indexOf(this.state.search) !== -1;
+            }
 
-
-
-
-
+        );
+         
         return (
             <>
                 <div className="jumbotron jumbotron-fluid">
                     <div className="container">
                         <h1 className="display-4">Employee Directory</h1>
                         <p className="lead">Find your Employees</p>
-                        <input className="text-center" placeholder="Search by Name"></input>
+                        <input className="text-center" placeholder="Search by Name" value= {this.state.search} onChange= {this.filtering}></input>
                     </div>
 
                 </div>
@@ -50,9 +59,9 @@ class Main extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.employees.map((employee, i) => (
+                        { filteredEmployees.map((employee, i) => (
                             <tr key={i}>
-                                <th scope="row">{i}</th>
+                                <th scope="row">{i + 1}</th>
                                 <td><img alt={employee.name.first} src={employee.picture.medium} /></td>
                                 <td>{employee.name.first}</td>
                                 <td>{employee.name.last}</td>
