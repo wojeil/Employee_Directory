@@ -5,7 +5,8 @@ class Main extends React.Component {
 
     state = {
         search:"",
-        employees: []
+        employees: [],
+        sorted: []
         
 
     }
@@ -13,7 +14,7 @@ class Main extends React.Component {
     componentDidMount() {
         API.getEmployees()
             .then(data => {
-                console.log(data.data.results);
+                // console.log(data.data.results);
                 this.setState({
                     employees: data.data.results
                 })
@@ -21,8 +22,25 @@ class Main extends React.Component {
             .catch(err => console.log(err));
     }
 
-    filtering (e){
-        this.setState({search: e.target.value.substr(0,20)});
+    handleFilter (e){
+        this.setState({search: e.target.value});
+    }
+
+    sorting( a, b ) {
+        if ( a.first < b.first ){
+          return -1;
+        }
+        if ( a.first> b.first ){
+          return 1;
+        }
+        return 0;
+      } 
+     
+    onClick = () =>{
+        console.log("it works");
+        this.setState({
+            sorted: this.state.employees.sort(this.sorting)
+        })
     }
 
 
@@ -34,7 +52,10 @@ class Main extends React.Component {
             }
 
         );
-         
+        console.log(filteredEmployees);
+
+       
+
         return (
             <>
                 <div className="jumbotron jumbotron-fluid">
@@ -42,7 +63,7 @@ class Main extends React.Component {
                         <h1 className="display-4">Employee Directory</h1>
                         <p className="lead">Find your Employees</p>
                         <input type="text" className="text-center" placeholder="Search by Name" 
-                        value= {this.state.search} onChange= {this.filtering.bind(this)}/>
+                        value= {this.state.search} onChange= {this.handleFilter.bind(this)}/>
                     </div>
 
                 </div>
@@ -52,7 +73,7 @@ class Main extends React.Component {
                         <tr>
                             <th scope="col"></th>
                             <th scope="col">Image</th>
-                            <th scope="col">First</th>
+                            <th scope="col" onClick= {this.onClick}>First</th>
                             <th scope="col">Last</th>
                             <th scope="col">Email</th>
                             <th scope="col">Phone Number</th>
