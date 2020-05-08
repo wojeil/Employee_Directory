@@ -4,13 +4,13 @@ import API from "../utils/API"
 class Main extends React.Component {
 
     state = {
-        search:"",
+        search: "",
         employees: [],
         sorted: [],
         order: false
 
     }
-
+    //api call//
     componentDidMount() {
         API.getEmployees()
             .then(data => {
@@ -21,42 +21,101 @@ class Main extends React.Component {
             })
             .catch(err => console.log(err));
     }
-
-    handleFilter (e){
-        this.setState({search: e.target.value});
+    //filter handler//
+    handleFilter(e) {
+        this.setState({ search: e.target.value });
     }
-
-    sorting( a, b) {
-        if ( a.name.first < b.name.first ){
-          return -1;
+    //sorting first name function//
+    sortingFirstName(a, b) {
+        if (a.name.first < b.name.first) {
+            return -1;
         }
-        if ( a.name.first> b.name.first ){
-          return 1;
+        if (a.name.first > b.name.first) {
+            return 1;
         }
         return 0;
-      } 
-     
-    onClick = () =>{
+    }
+    //sorting last name function//
+    sortingLastName(a, b) {
+        if (a.name.last < b.name.last) {
+            return -1;
+        }
+        if (a.name.last > b.name.last) {
+            return 1;
+        }
+        return 0;
+    }
+
+
+    //sorting age function//
+    sortingAge(a, b) {
+        if (a.dob.age < b.dob.age) {
+            return -1;
+        }
+        if (a.dob.age > b.dob.age) {
+            return 1;
+        }
+        return 0;
+    }
+
+
+    //click to sort through first name//    
+    onClickFirst = () => {
         console.log("it works");
-        if(this.state.order=== false){
+        if (this.state.order === false) {
             this.setState({
-                sorted:this.state.employees.sort(this.sorting),
+                sorted: this.state.employees.sort(this.sortingFirstName),
                 order: true
             })
         }
-        else{
+        else {
             this.setState({
-                sorted:this.state.employees.reverse(),
+                sorted: this.state.employees.reverse(),
+                order: false
+            })
+
+        }
+    }
+    //click to sort through last name//    
+    onClickLast = () => {
+        console.log("it works");
+        if (this.state.order === false) {
+            this.setState({
+                sorted: this.state.employees.sort(this.sortingLastName),
+                order: true
+            })
+        }
+        else {
+            this.setState({
+                sorted: this.state.employees.reverse(),
                 order: false
             })
 
         }
     }
 
+    //click to sort through age//    
+    onClickAge = () => {
+        console.log("it works");
+        if (this.state.order === false) {
+            this.setState({
+                sorted: this.state.employees.sort(this.sortingAge),
+                order: true
+            })
+        }
+        else {
+            this.setState({
+                sorted: this.state.employees.reverse(),
+                order: false
+            })
+
+        }
+    }
 
     render() {
+        //placing filter for the items being mapped//
         let filteredEmployees = this.state.employees.filter(
-            (employee) =>{
+            (employee) => {
                 // return employee.indexOf(this.state.search) !== -1;
                 return employee.name.first.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
             }
@@ -64,7 +123,7 @@ class Main extends React.Component {
         );
         console.log(filteredEmployees);
 
-       
+
 
         return (
             <>
@@ -72,8 +131,8 @@ class Main extends React.Component {
                     <div className="container">
                         <h1 className="display-4">Employee Directory</h1>
                         <p className="lead">Find your Employees</p>
-                        <input type="text" className="text-center" placeholder="Search by Name" 
-                        value= {this.state.search} onChange= {this.handleFilter.bind(this)}/>
+                        <input type="text" className="text-center" placeholder="Search by Name"
+                            value={this.state.search} onChange={this.handleFilter.bind(this)} />
                     </div>
 
                 </div>
@@ -83,15 +142,15 @@ class Main extends React.Component {
                         <tr>
                             <th scope="col"></th>
                             <th scope="col">Image</th>
-                            <th scope="col" onClick= {this.onClick}>First <i class="fas fa-arrow-up"></i><i class="fas fa-arrow-down"></i></th>
-                            <th scope="col">Last</th>
+                            <th scope="col" onClick={this.onClickFirst}>First <i className="fas fa-arrow-up"></i><i className="fas fa-arrow-down"></i></th>
+                            <th scope="col" onClick={this.onClickLast}>Last <i className="fas fa-arrow-up"></i><i className="fas fa-arrow-down"></i></th>
                             <th scope="col">Email</th>
                             <th scope="col">Phone Number</th>
-                            <th scope="col">Age</th>
+                            <th scope="col" onClick={this.onClickAge}>Age  <i className="fas fa-arrow-up"></i><i className="fas fa-arrow-down"></i></th>
                         </tr>
                     </thead>
                     <tbody>
-                        { filteredEmployees.map((employee, i) => (
+                        {filteredEmployees.map((employee, i) => (
                             <tr key={i}>
                                 <th scope="row">{i + 1}</th>
                                 <td><img alt={employee.name.first} src={employee.picture.medium} /></td>
@@ -100,7 +159,7 @@ class Main extends React.Component {
                                 <td>{employee.email}</td>
                                 <td>{employee.cell}</td>
                                 <td>{employee.dob.age}</td>
-                                
+
                             </tr>
                         ))}
 
