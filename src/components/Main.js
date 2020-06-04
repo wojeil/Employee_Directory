@@ -59,7 +59,17 @@ class Main extends React.Component {
         return 0;
     }
 
-    
+    //sorting email function//
+
+    sortingEmail(a,b) {
+        if (a.email < b.email) {
+            return -1;
+        }
+        if (a.email > b.email){
+            return 1;
+        }
+        return 0;
+    }
 
 
     //click to sort through first name//    
