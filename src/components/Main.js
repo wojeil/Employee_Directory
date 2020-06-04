@@ -84,7 +84,7 @@ class Main extends React.Component {
 
     //click to sort through first name//    
     onClickFirst = () => {
-        console.log("it works");
+        // console.log("it works");
         if (this.state.order === false) {
             this.setState({
                 sorted: this.state.employees.sort(this.sortingFirstName),
@@ -101,7 +101,7 @@ class Main extends React.Component {
     }
     //click to sort through last name//    
     onClickLast = () => {
-        console.log("it works");
+        // console.log("it works");
         if (this.state.order === false) {
             this.setState({
                 sorted: this.state.employees.sort(this.sortingLastName),
@@ -119,7 +119,7 @@ class Main extends React.Component {
 
     //click to sort through age//    
     onClickAge = () => {
-        console.log("it works");
+        // console.log("it works");
         if (this.state.order === false) {
             this.setState({
                 sorted: this.state.employees.sort(this.sortingAge),
@@ -137,7 +137,7 @@ class Main extends React.Component {
 
     //click to sort through email//
     onClickEmail =() =>{
-        console.log("it works email");
+        // console.log("it works email");
         if (this.state.order === false) {
             this.setState({
                 sorted: this.state.employees.sort(this.sortingEmail),
@@ -155,7 +155,7 @@ class Main extends React.Component {
 
     //click to sort through phone number//
     onClickPhone =() => {
-        console.log ("it works phone");
+        // console.log ("it works phone");
         if (this.state.order === false) {
             this.setState({
                 sorted:this.state.employees.sort(this.sortingphone),
