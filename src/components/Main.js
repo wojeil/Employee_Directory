@@ -59,6 +59,8 @@ class Main extends React.Component {
         return 0;
     }
 
+    
+
 
     //click to sort through first name//    
     onClickFirst = () => {
@@ -111,6 +113,12 @@ class Main extends React.Component {
             })
 
         }
+    }
+
+    //click to sort through email//
+    onClickEmail =() =>{
+        console.log("it works email");
+
     }
 
     render() {
