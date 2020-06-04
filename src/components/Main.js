@@ -175,7 +175,7 @@ class Main extends React.Component {
                             <th scope="col">Image</th>
                             <th scope="col" onClick={this.onClickFirst}>First <i className="fas fa-arrow-up"></i><i className="fas fa-arrow-down"></i></th>
                             <th scope="col" onClick={this.onClickLast}>Last <i className="fas fa-arrow-up"></i><i className="fas fa-arrow-down"></i></th>
-                            <th scope="col">Email</th>
+                            <th scope="col" onClick={this.onClickEmail}>Email</th>
                             <th scope="col">Phone Number</th>
                             <th scope="col" onClick={this.onClickAge}>Age  <i className="fas fa-arrow-up"></i><i className="fas fa-arrow-down"></i></th>
                         </tr>
