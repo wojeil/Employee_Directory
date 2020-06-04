@@ -1,5 +1,6 @@
 import React from "react";
-import API from "../utils/API"
+import API from "../utils/API";
+import "./Main.css";
 
 class Main extends React.Component {
 
@@ -127,7 +128,7 @@ class Main extends React.Component {
 
         return (
             <>
-                <div className="jumbotron jumbotron-fluid">
+                <div className="jumbotron jumbotron-fluid" id="jumbo">
                     <div className="container">
                         <h1 className="display-4">Employee Directory</h1>
                         <p className="lead">Find your Employees</p>
