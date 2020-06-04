@@ -128,6 +128,18 @@ class Main extends React.Component {
     //click to sort through email//
     onClickEmail =() =>{
         console.log("it works email");
+        if (this.state.order === false) {
+            this.setState({
+                sorted: this.state.employees.sort(this.sortingEmail),
+                order:true
+            })
+        }
+        else {
+            this.setState({
+                sorted: this.state.employees.reverse(),
+                order: false
+            })
+        }
 
     }
 
