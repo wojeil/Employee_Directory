@@ -153,6 +153,23 @@ class Main extends React.Component {
 
     }
 
+    //click to sort through phone number//
+    onClickPhone =() => {
+        console.log ("it works phone");
+        if (this.state.order === false) {
+            this.setState({
+                sorted:this.state.employees.sort(this.sortingphone),
+                order:true
+            })
+        }
+        else {
+            this.setState({
+                sorted: this.state.employees.reverse(),
+                order:false
+            })
+        }
+    }
+
     render() {
         //placing filter for the items being mapped//
         let filteredEmployees = this.state.employees.filter(
