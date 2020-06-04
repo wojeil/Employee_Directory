@@ -60,7 +60,6 @@ class Main extends React.Component {
     }
 
     //sorting email function//
-
     sortingEmail(a,b) {
         if (a.email < b.email) {
             return -1;
@@ -70,6 +69,17 @@ class Main extends React.Component {
         }
         return 0;
     }
+
+    //sorting phone number function//
+    sortingphone(a,b) {
+        if (a.phone < b.phone) {
+            return -1;
+        }
+        if (a.phone > b.phone){
+            return 1;
+        }
+        return 0;
+    } 
 
 
     //click to sort through first name//    
@@ -175,7 +185,7 @@ class Main extends React.Component {
                             <th scope="col">Image</th>
                             <th scope="col" onClick={this.onClickFirst}>First <i className="fas fa-arrow-up"></i><i className="fas fa-arrow-down"></i></th>
                             <th scope="col" onClick={this.onClickLast}>Last <i className="fas fa-arrow-up"></i><i className="fas fa-arrow-down"></i></th>
-                            <th scope="col" onClick={this.onClickEmail}>Email</th>
+                            <th scope="col" onClick={this.onClickEmail}>Email <i className="fas fa-arrow-up"></i><i className="fas fa-arrow-down"></i></th>
                             <th scope="col">Phone Number</th>
                             <th scope="col" onClick={this.onClickAge}>Age  <i className="fas fa-arrow-up"></i><i className="fas fa-arrow-down"></i></th>
                         </tr>
