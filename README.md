@@ -25,6 +25,9 @@ Install
 Deployment
 GitHub
 
+Try Me Live
+<a href="https://wojeil.github.io/Employee_Directory/">https://wojeil.github.io/Employee_Directory/</a>
+
 Built With
 React
 
