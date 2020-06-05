@@ -1,7 +1,7 @@
 # Employee Directory
 My First Project with REACT.
 
-<img src= "./public/appImage.png" width="200" height="200">
+<img src= "./public/appImage.png" width="350" height="200">
 
 
 
